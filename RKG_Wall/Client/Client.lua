@@ -46,7 +46,7 @@ RegisterCommand(Config.Command.Wall,function(source,args,rawCommand)
 				drawNotification(Config.Notify.ActiceWall)
 				PlaySoundFrontend(-1, "CONFIRM_BEEP", "HUD_MINI_GAME_SOUNDSET", 0)	
 			end
-		elseif args[1] == Config.Command.Distance and args[2] then
+		elseif args[1] == Config.Command.Distance and parseInt(args[2]) then
 			if wall then
 				standard_distance = tonumber(args[2])
 				vSERVER.reportWall("distance",true,tonumber(args[2]))
