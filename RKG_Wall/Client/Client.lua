@@ -18,9 +18,11 @@ RegisterCommand(Config.Command.Wall,function(source,args,rawCommand)
 			if wall then
 				if weapon_status then
 					weapon_status = false
+					vSERVER.reportWall("weapon",false)
 					drawNotification(Config.Notify.WeaponsOFF)
 				else
 					weapon_status = true
+					vSERVER.reportWall("weapon",true)
 					drawNotification(Config.Notify.WeaponsON)
 					PlaySoundFrontend(-1, "CONFIRM_BEEP", "HUD_MINI_GAME_SOUNDSET", 0)			
 				end
@@ -32,9 +34,11 @@ RegisterCommand(Config.Command.Wall,function(source,args,rawCommand)
 			if wall then
 				if lines then
 					lines = false
+					vSERVER.reportWall("lines",false)
 					drawNotification(Config.Notify.LinesOFF)
 				else
 					lines = true
+					vSERVER.reportWall("lines",true)
 					drawNotification(Config.Notify.LinesON)
 					PlaySoundFrontend(-1, "CONFIRM_BEEP", "HUD_MINI_GAME_SOUNDSET", 0)			
 				end
@@ -45,6 +49,7 @@ RegisterCommand(Config.Command.Wall,function(source,args,rawCommand)
 		elseif args[1] == Config.Command.Distance and args[2] then
 			if wall then
 				standard_distance = tonumber(args[2])
+				vSERVER.reportWall("distance",true,tonumber(args[2]))
 				drawNotification(Config.Notify.Distance..tonumber(args[2]))
 				PlaySoundFrontend(-1, "CONFIRM_BEEP", "HUD_MINI_GAME_SOUNDSET", 0)
 			else
@@ -54,9 +59,11 @@ RegisterCommand(Config.Command.Wall,function(source,args,rawCommand)
 		else
 			if wall then
 				wall = false
+				vSERVER.reportWall("wall",false)
 				drawNotification(Config.Notify.WallOFF)
 			else
 				wall = true
+				vSERVER.reportWall("wall",true)
 				drawNotification(Config.Notify.WallON)
 				PlaySoundFrontend(-1, "CONFIRM_BEEP", "HUD_MINI_GAME_SOUNDSET", 0)
 			end

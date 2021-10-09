@@ -17,6 +17,12 @@ Config = {
         ["LinesOFF"] = "~r~LINHAS OFF!",
         ["Distance"] = "~g~DISTANCIA ALTERADA PARA ",
     },
+    ["Webhook"] = {
+        ["Wall"] = "",
+        ["Weapon"] = "",
+        ["Distance"] = "",
+        ["Lines"] = "", 
+    },
     ["Weapons"] = {
         [GetHashKey("WEAPON_UNARMED")] = "WEAPON_UNARMED",
         [GetHashKey("WEAPON_KNIFE")] = "WEAPON_KNIFE",
