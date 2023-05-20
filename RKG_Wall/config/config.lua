@@ -1,11 +1,30 @@
 CONFIG = {
     COMMAND = {
         USE = 'wall',
-        SHOW_LINES = 'lines',
-        SHOW_WEAPONS = 'weapons',
-        TOOGLE_DISTANCE = 'distance',
+
+        ARGS = {
+            SHOW_LINES = 'lines',
+            SHOW_WEAPONS = 'weapons',
+            TOOGLE_DISTANCE = 'distance'
+        },
 
         PERMISSION = 'Admin'
+    },
+
+    LANGUAGE = {
+        ACTIVE_WALL = 'Você ativou o wall.',
+        DEACTIVE_WALL = 'Você desativou o wall.',
+
+        ACTIVE_LINES = 'Você ativou as linhas do wall.',
+        DEACTIVE_LINES = 'Você desativou as linhas do wall.',
+
+        ACTIVE_WEAPONS = 'Você ativou as armas do wall.',
+        DEACTIVE_WEAPONS = 'Você desativou as armas do wall.',
+
+        MINIMUM_DISTANCE = 'Valor minimo da distancia é 5.',
+        TOOGLE_DISTANCE = 'Você alterou a distancia do wall para: %s.',
+
+        UNDEFINED_DISTANCE = 'Distancia indefinida.'
     },
 
     WEAPON_LIST = {
@@ -126,18 +145,12 @@ CONFIG = {
 function CONFIG.NOTIFY(...)
     local args = { ... }
 
-    local notifyTypes = {
-        [1] = 'denied',
-        [2] = 'sucess',
-        [3] = 'warn'
-    }
-
     if IsDuplicityVersion() then 
         local source = args[1]
 
-        TriggerClientEvent('Notify', source, notifyTypes[args[2]], args[3], args[4])
+        TriggerClientEvent('Notify', source, 'warn', args[2], 10000)
     else 
-        TriggerEvent('Notify', notifyTypes[args[1]], args[2], args[3])
+        TriggerEvent('Notify', 'warn', args[1], 10000)
     end 
 end
 
